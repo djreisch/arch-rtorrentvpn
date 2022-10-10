@@ -59,7 +59,7 @@ mv /tmp/unpack/ffmpeg*/ff* "/usr/bin/"
 ####
 
 # define pacman packages
-pacman_packages="git nginx php-fpm rsync openssl tmux mediainfo php-geoip zip libx264 libvpx xmlrpc-c sox python2 python-pip"
+pacman_packages="git nginx php-fpm rsync openssl tmux mediainfo php-geoip zip libx264 libvpx xmlrpc-c sox python-pip"
 
 # install compiled packages using pacman
 if [[ ! -z "${pacman_packages}" ]]; then
@@ -74,6 +74,17 @@ aur_packages="autodl-irssi-community"
 
 # call aur install script (arch user repo) - note true required due to autodl-irssi error during install
 source aur.sh
+
+# custom
+####
+
+package_name="python2.tar.zst"
+
+# download compiled python2 (removed from AOR)
+rcurl.sh -o "/tmp/${package_name}" "https://github.com/binhex/packages/raw/master/compiled/${OS_ARCH}/${package_name}"
+
+# install python2
+pacman -U "/tmp/${package_name}" --noconfirm
 
 # github release - rutorrent
 ####
