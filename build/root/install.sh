@@ -178,6 +178,9 @@ echo "" >> "${php_fpm_ini}"
 echo "; Specify user listener group" >> "${php_fpm_ini}"
 echo "listen.group = users" >> "${php_fpm_ini}"
 
+# configure locale
+echo "LANG=en_US.UTF-8" > /etc/locale.conf
+
 # config - rutorrent
 ####
 
